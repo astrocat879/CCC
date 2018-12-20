@@ -1,7 +1,8 @@
 import sys
 
-daynumber = int(sys.stdin.readline())
-monthdays = int(sys.stdin.readline())
+a = sys.stdin.readline().split(" ")
+monthdays = int(a[1])
+daynumber = int(a[0])
 print("Sun Mon Tue Wed Thr Fri Sat")
 month = []
 week = []
@@ -30,6 +31,9 @@ for i in range(1, (monthdays+1)):
 
 for week in month:
   if monthdays in week:
-      print(" ".join(week) + "\n")
+      print((" ".join(week) + "\n").rstrip())
   else:
-    print(" ".join(week))
+    print((" ".join(week)).rstrip())
+    #Done when 13 no flame plz mom
+    #Justin z bad
+    #Dont subscribe to meowuesrnamewannabe
