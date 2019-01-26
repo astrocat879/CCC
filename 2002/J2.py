@@ -1,16 +1,11 @@
-import sys
-x = int(sys.stdin.readline())
-m = int(sys.stdin.readline())
-a = False
-for n in range(1,m):
-    a = (x*n) % m
-    if a == 1:
-        print(str(n))
-        a = True
+while True:
+    word = input()
+    if word == 'quit!':
         break
+    if len(word) > 4:
+        if word[-2:] == 'or' and (word[-3] not in 'aeiuo'):
+            word = list(word)
+            word.insert(-1, 'u')
 
 
-if not(a):
-    print('No such integer exists.')
-
-
+    print(''.join(word))
