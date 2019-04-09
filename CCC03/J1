@@ -1,0 +1,9 @@
+t = int(input())
+s = int(input())
+h = int(input())
+space = (" ") * s
+spikes = ("*" + space + "*" + space + "*\n") * t
+line = "*" * ((2 * s) + 3)
+handle = (space + " " + "*\n") * h
+print(spikes + line)
+print(handle)
