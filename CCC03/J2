@@ -1,0 +1,15 @@
+import math
+while True:
+    c = int(input())
+    if c == 0:
+        break
+    possible = []
+    dimensions = []
+    for i in range(1,math.ceil(math.sqrt(c)+1)):
+        if c % i == 0:
+            possible.append((c/i+i)*2)
+            dimensions.append((sorted([c/i, i])))
+    minimum = possible.index(min(possible))
+    perimeter = possible[minimum]
+    dimension = dimensions[minimum]
+    print("Minimum perimeter is", str(int(perimeter)), "with dimensions", str(int(dimension[0])) + " x " + str(int(dimension[1])), sep= " ")
