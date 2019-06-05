@@ -38,7 +38,7 @@ for i in ans:
         minimum = (costs[i]+dists[i])
 print minimum
 
-solution provided by n3rdslqyer84
+#solution provided by n3rdslqyer84
 #use pypy2 to pass on dmoj, official test data no clue
 #essentially just a normal dijikstras with a few added conditions
 #graph isn't sparse, adjacency matrix should pass in time :p
