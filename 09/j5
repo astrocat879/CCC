@@ -1,0 +1,125 @@
+class Friend:
+    def __init__(self, name):
+        self.friends = []
+        self.name = name
+    def i(self,y):
+        if y not in self.friends:
+            self.friends.append(y)
+    def d(self, y):
+        self.friends.remove(y)
+    def n(self):
+        return len(self.friends)
+    def f(self):
+        fof = []
+        for i in self.friends:
+            for friend in i.friends:
+                if friend not in self.friends and friend != self:
+                    fof.append(friend)
+
+        fof = set(fof)
+        return len(fof)
+    def s(self, y):
+        queue = [[self]]
+        visited = []
+        while queue:
+            path = queue.pop(0)
+            node = path[-1]
+            if node == y:
+                return len(path)
+
+            else:
+                for i in node.friends:
+                    if i not in visited:
+                        newpath = list(path)
+                        newpath.append(i)
+                        queue.append(newpath)
+                        visited.append(node)
+        return -1
+    def __repr__(self):
+        return str(self.name)
+
+network = {}
+network[1] = Friend(1)
+network[2] = Friend(2)
+network[3] = Friend(3)
+network[4] = Friend(4)
+network[5] = Friend(5)
+network[6] = Friend(6)
+network[7] = Friend(7)
+network[8] = Friend(8)
+network[9] = Friend(9)
+network[10] = Friend(10)
+network[11] = Friend(11)
+network[12] = Friend(12)
+network[13] = Friend(13)
+network[14] = Friend(14)
+network[15] = Friend(15)
+network[16] = Friend(16)
+network[17] = Friend(17)
+network[18] = Friend(18)
+network[1].friends = [network[6]]
+network[2].friends = [network[6]]
+network[3].friends = [network[6], network[15], network[4], network[5]]
+network[4].friends = [network[3], network[5], network[6]]
+network[5].friends = [network[4], network[6], network[3]]
+network[6].friends = [network[2], network[1], network[7], network[3], network[4], network[5]]
+network[7].friends = [network[8], network[6]]
+network[8].friends = [network[9], network[7]]
+network[9].friends = [network[8], network[10], network[12]]
+network[10].friends = [network[11], network[9]]
+network[11].friends = [network[10], network[12]]
+network[12].friends = [network[9], network[11], network[13]]
+network[13].friends = [network[12], network[14], network[15]]
+network[14].friends = [network[13]]
+network[15].friends = [network[3], network[13]]
+network[16].friends = [network[17], network[18]]
+network[17].friends = [network[18], network[16]]
+network[18].friends = [network[17], network[16]]
+while True:
+    command = input()
+    if command == 'i':
+        xa = int(input())
+        ya = int(input())
+        if xa not in network:
+            x = Friend(xa)
+        else:
+            x = network[xa]
+        if ya not in network:
+            y = Friend(ya)
+        else:
+            y = network[ya]
+        x.i(y)
+        y.i(x)
+        network[xa] = x
+        network[ya] = y
+    elif command == 'd':
+        x = int(input())
+        y = int(input())
+        network[x].d(network[y])
+        network[y].d(network[x])
+    elif command == 'n':
+        x = int(input())
+        a = network[x].n()
+        print(a)
+    elif command == 'f':
+        x = int(input())
+        a = network[x].f()
+        print(a)
+    elif command == 's':
+        x = int(input())
+        y = int(input())
+
+        if y in network and x in network:
+            x = network[x]
+            y = network[y]
+            if x.s(y) != -1:
+
+                print(x.s(y)-1)
+            else:
+                print("Not connected")
+        else:
+            print("Not connected")
+    elif command == 'q':
+        break
+        
+#Kinda overkill with the amount of code, but its just so clean.
